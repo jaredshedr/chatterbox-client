@@ -10,12 +10,19 @@ var MessagesView = {
     // when this view loads.
   },
 
-  render: function() {
+  render: function(data) {
     // TODO: Render _all_ the messages.
+
+    data.forEach(function (item) {
+      var $currentMessages = $(MessageView.render(item));
+      $currentMessages.appendTo(MessagesView.$chats);
+    });
   },
 
   renderMessage: function(message) {
     // TODO: Render a single message.
+    var $currentMessage = $(MessageView.render(message));
+    $currentMessage.appendTo(MessagesView.$chats);
   },
 
   handleClick: function(event) {
@@ -24,3 +31,8 @@ var MessagesView = {
   }
 
 };
+
+
+
+
+// Messages controls our data and we will create a template for each message through messagEview, then use messsages view to render them on the page

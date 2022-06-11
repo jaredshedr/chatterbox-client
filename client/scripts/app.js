@@ -21,15 +21,26 @@ var App = {
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
+    setInterval(App.fetch, 2000);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      // console.log(data);
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
+      Messages._data = data;
+      MessagesView.render(data);
+
+      for (var i = 0; i < data.length; i++) {
+        if (!Rooms._data.includes(data[i]['roomname'])) {
+          Rooms._data.push(data[i]['roomname']);
+        }
+      }
+      // console.log(Rooms._data);
+      callback();
     });
   },
 
