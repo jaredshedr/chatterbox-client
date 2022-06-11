@@ -12,11 +12,14 @@ var MessagesView = {
 
   render: function(data) {
     // TODO: Render _all_ the messages.
+    // MessagesView.clearAll();
 
+    MessagesView.$chats.html('');
     data.forEach(function (item) {
       var $currentMessages = $(MessageView.render(item));
       $currentMessages.appendTo(MessagesView.$chats);
     });
+
   },
 
   renderMessage: function(message) {
@@ -28,7 +31,7 @@ var MessagesView = {
   handleClick: function(event) {
     // TODO: handle a user clicking on a message
     // (this should add the sender to the user's friend list).
-  }
+  },
 
 };
 

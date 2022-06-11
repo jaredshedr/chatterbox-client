@@ -27,18 +27,15 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      // console.log(data);
+      console.log(data);
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
       Messages._data = data;
-      MessagesView.render(data);
 
-      for (var i = 0; i < data.length; i++) {
-        if (!Rooms._data.includes(data[i]['roomname'])) {
-          Rooms._data.push(data[i]['roomname']);
-        }
-      }
+      Messages.render(data);
+      Rooms.render(Messages._data);
+
       // console.log(Rooms._data);
       callback();
     });

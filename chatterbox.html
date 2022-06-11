@@ -28,12 +28,16 @@
       <div id="rooms">
         Room:
         <select></select>
-        <button>Add Room</button>
+        <br>
+        <input class="room-value" type="text"/>
+        <button class="add-room">Add Room</button>
       </div>
-      <form action="#" id="send" method="post">
-        <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
-      </form>
+      <div id="server">
+        <form action="#" id="id" method="post">
+          <input type="text" name="message" id="message"/>
+          <input type="submit" name="submit" class="submit"/>
+        </form>
+      </div>
     </div>
     <div id="chats"></div>
     <script src="client/env/config.js"></script>

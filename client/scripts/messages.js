@@ -6,11 +6,31 @@ var Messages = {
   // TODO: Define how you want to store your messages.
   _data: [],
 
+  render: function (data) {
+    Messages._data = data;
 
+    Messages.escaper();
 
-  getMessagesForRoom: function (roomName) {
+    // condition
+    if (!RoomsView.roomBool) {
+      MessagesView.render(Messages._data);
+    } else {
+      RoomsView.renderRoom(RoomsView.$select.val());
+    }
 
+  },
 
+  escaper: function () {
+    Messages._data.forEach(function(currentMessage) {
+      currentMessage = {
+        'message_id': _.escape(currentMessage.message_id),
+        roomname: _.escape(currentMessage.roomname),
+        text: _.escape(currentMessage.text),
+        username: _.escape(currentMessage.username),
+        'github_handle': _.escape(currentMessage.github_handle),
+        'created_at': _.escape(currentMessage.created_at)
+      };
+    });
   },
 
 
@@ -24,6 +44,6 @@ var Messages = {
 };
 
 
-setTimeout(function () {
-  console.log(Messages._data);
-}, 5000);
+// setTimeout(function () {
+//   console.log(Messages._data);
+// }, 5000);
