@@ -13,6 +13,10 @@ var Rooms = {
   render: function (data) {
     let currentLength = Rooms._data.length;
 
+    if (typeof data === 'string') {
+      RoomsView.render(Rooms._data);
+    }
+
     for (var i = 0; i < data.length; i++) {
       if (!Rooms._data.includes(data[i]['roomname'])) {
         Rooms._data.push(data[i]['roomname']);

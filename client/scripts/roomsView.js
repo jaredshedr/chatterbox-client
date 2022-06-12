@@ -16,7 +16,7 @@ var RoomsView = {
     // TODO: Render out the list of rooms.
     RoomsView.$select.html('');
     for (var selectedRoom of listOfRooms) {
-      var $selectedRoom = $(`<option id = "selectedRoom" value="${selectedRoom}">${selectedRoom}</option>`);
+      var $selectedRoom = $(`<option id = "selectedRoom" class="${selectedRoom}" value="${selectedRoom}">${selectedRoom}</option>`);
       $selectedRoom.appendTo(RoomsView.$select);
     }
 
@@ -47,7 +47,10 @@ var RoomsView = {
     // TODO: Handle the user clicking the "Add Room" button.
     $('.add-room').on('click', function() {
       var newRoomName = $('.room-value').val();
-      Rooms._data.push(newRoomName);
+      if (!Rooms._data.includes(newRoomName)) {
+        Rooms._data.push(newRoomName);
+      }
+      Rooms.render(newRoomName);
 
     });
   }
